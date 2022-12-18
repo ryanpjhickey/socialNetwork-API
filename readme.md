@@ -16,6 +16,7 @@ This is a simple Social Network API. You can use it to implement functionality t
 ---
 ## Video
 
+https://www.youtube.com/watch?v=pl3_RxdDwN4
 
 ---
 
