@@ -49,22 +49,6 @@ const ThoughtsController = {
       });
   },
 
-
-  createThoughts({ params, body }, res) {
-    Thoughts.create(body)
-      .then(({ _id }) => {
-        return Users.findOneAndUpdate({ _id: params.userId }, { $push: { thoughts: _id } }, { new: true });
-      })
-      .then(dbThoughtsData => {
-        if (!dbThoughtsData) {
-          res.status(404).json({ message: 'No thoughts found with this id' });
-          return;
-        }
-        res.json(dbThoughtsData)
-      })
-      .catch(err => res.json(err));
-  },
-
   updateThoughts({ params, body }, res) {
     Thoughts.findOneAndUpdate({ _id: params.id }, body, { new: true, runValidators: true })
       .populate({ path: 'reactions', select: '-__v' })
